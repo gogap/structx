@@ -12,12 +12,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gogap/structx"
 	"reflect"
 	"time"
-)
 
-type FieldFilter func(path string, tagMap map[string]reflect.StructTag, val reflect.Value) (err error)
+	"github.com/gogap/structx"
+)
 
 type Person struct {
 	Name   string
