@@ -83,5 +83,89 @@ func f1(path string, field structx.Field) (err error) {
 
 ```
 
+**result**
+
+```json
+Before
+{
+    "Persons": [
+        {
+            "Name": "fatih",
+            "Number": 1234567
+        },
+        {
+            "Name": "zeal",
+            "Number": 123123345
+        }
+    ],
+    "HasPermission": true,
+    "Password": "1234567",
+    "LastAccessed": "2018-12-07T10:26:20.246868+08:00",
+    "X": {
+        "aaa": {
+            "Name": "fatih",
+            "Number": 1234567
+        }
+    }
+}
+After
+{
+    "Persons": [
+        {
+            "Name": "fatih",
+            "Number": 1234567
+        },
+        {
+            "Name": "zeal",
+            "Number": 123123345
+        }
+    ],
+    "HasPermission": true,
+    "Password": "This field's content is changed by f1, and the field tag is:data",
+    "LastAccessed": "2018-12-07T10:26:20.246868+08:00",
+    "X": {
+        "aaa": {
+            "Name": "fatih",
+            "Number": 1234567
+        }
+    }
+}
+Values
+{
+    "Access.LastAccessed": {
+        "Val": {},
+        "Tag": "structs:\"omitnested\""
+    },
+    "Access.Password": {
+        "Val": {},
+        "Tag": "encrypt:\"data\""
+    },
+    "Access.Persons[0].Name": {
+        "Val": {},
+        "Tag": ""
+    },
+    "Access.Persons[0].Number": {
+        "Val": {},
+        "Tag": ""
+    },
+    "Access.Persons[1].Name": {
+        "Val": {},
+        "Tag": ""
+    },
+    "Access.Persons[1].Number": {
+        "Val": {},
+        "Tag": ""
+    },
+    "Access.X[aaa].Name": {
+        "Val": {},
+        "Tag": ""
+    },
+    "Access.X[aaa].Number": {
+        "Val": {},
+        "Tag": ""
+    }
+}
+```
+
 
 > some code is copied from https://github.com/fatih/structs
